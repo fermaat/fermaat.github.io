@@ -3,6 +3,7 @@ layout: post
 title: "LoRA vs Full Fine-Tuning: A Beautiful Illusion of Equivalence"
 date: 2025-06-11
 ---
+![LoRA vs Full Fine-Tuning: Visualizing Intruder Dimensions](https://github.com/fermaat/fermaat.github.io/blob/main/files/images/Lora/Lora1.png)
 
 Some ideas in machine learning just click the moment you encounter them. For me, LoRA (Low-Rank Adaptation) was one of those ideas. Elegant, efficient, and surprisingly powerful, it’s now a familiar tool in the fine tuning toolkit for many working with large pre-trained models.
 Recently, I came across a paper that adds a fascinating twist to the LoRA narrative: “LoRA vs Full Fine-Tuning: An Illusion of Equivalence” (paper link), by Reece Shuttleworth, Jacob Andreas, Antonio Torralba and Pratyusha Sharma

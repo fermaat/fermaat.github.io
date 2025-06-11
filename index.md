@@ -7,27 +7,31 @@ title: Fernando Velasco Lozano | AI Scientist
 <p align="center">
   <a href="https://www.linkedin.com/in/fernandovelascolozano/" target="_blank">LinkedIn</a> • 
   <a href="https://github.com/fermaat" target="_blank">GitHub</a> • 
-  <a href="mailto:fermat.vl@gmail.com">Email</a></p>
+  <a href="mailto:fermat.vl@gmail.com">Email</a> •
+  <a href="https://medium.com/@fermaat.vl" target="_blank">Medium</a> •
+  <a href="https://github.com/fermaat/fermaat.github.io/blob/main/files/CV_Fernando_Velasco_0525.pdf" target="_blank">CV</a>
+</p>
 
 ---
-### Sobre mí
+### About Me
 
-Soy un Data Science Team Lead con una década de experiencia transformando desafíos de negocio en soluciones de IA de alto impacto. Mi especialidad es gestionar el ciclo de vida completo de modelos de Machine Learning, desde la investigación y el fine-tuning de LLMs/ASR hasta su despliegue y monitorización.
+I am a Data Science Team Lead with a decade of experience transforming business challenges into high-impact AI solutions. My specialty is managing the full lifecycle of Machine Learning models, from research and fine-tuning of LLMs/ASR to their deployment and monitoring.
 
-He liderado equipos y proyectos clave, logrando mejoras significativas en calidad y eficiencia para grandes compañías como Electronic Arts. Busco un rol senior como Data Scientist, ML Engineer o Researcher donde pueda aplicar mi visión técnica y experiencia práctica para resolver problemas complejos.
-
----
-### Proyectos Destacados
-
-* **HomeSync AI**: Un proyecto de IA para la gestión del hogar.
-    * [Ver en GitHub](https://github.com/fermaat/HomeSync_AI)
-* **LoRA Fine-tuning**: Implementación de LoRA para fine-tuning de modelos.
-    * [Ver en GitHub](https://github.com/fermaat/LoRA-fine-tuning#)
+I have led key teams and projects, achieving significant improvements in quality and efficiency for large companies like Electronic Arts. I am seeking a senior role as a Data Scientist, ML Engineer, or Researcher where I can apply my technical vision and practical experience to solve complex problems.
 
 ---
-### Proyectos y Artículos Recientes
+### Featured Projects
 
-Aquí aparecerá la lista de tus artículos y proyectos. Al crear posts en la carpeta `_posts`, GitHub Pages los añadirá automáticamente aquí.
+* **HomeSync AI**: An an innovative application designed to streamline household management by leveraging advanced AI capabilities, specifically Google's Gemini Pro Vision model. This project aims to digitize grocery receipts, analyze spending habits, and provide smart recommendations for household purchases.
+    * [View on GitHub](https://github.com/fermaat/HomeSync_AI)
+* **LoRA Fine-tuning**: Implementation of LoRA for model fine-tuning.
+    * [View on GitHub](https://github.com/fermaat/LoRA-fine-tuning#)
+
+---
+### My Latest Work & Insights
+
+Here you'll find my **latest projects, case studies, and articles**, where I break down my practical experience and knowledge in AI and Machine Learning. Many of these are also available on [**my Medium profile**](https://medium.com/@fermaat.vl)!
+
 <ul>
   {% for post in site.posts %}
     <li>
