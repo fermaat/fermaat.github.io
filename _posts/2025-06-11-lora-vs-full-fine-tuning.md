@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "LoRA vs Full Fine-Tuning: A Beautiful Illusion of Equivalence"
 date: 2025-06-11
 ---
