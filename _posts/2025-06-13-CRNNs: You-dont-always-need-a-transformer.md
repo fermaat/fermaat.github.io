@@ -37,7 +37,7 @@ Once you have the feature maps, the model:
 - Converts each **column** of the feature map into a **feature vector**
 
 It’s such a simple idea — yet so effective for turning images into something sequence-friendly.
-[As the paper says: *Each vector in the extracted feature sequence is associated with a receptive field on the input image, and can be considered as the feature vector of that field*](https://github.com/fermaat/fermaat.github.io/blob/main/files/images/CRNNs/CRNN2.png?raw=true)
+![As the paper says: *Each vector in the extracted feature sequence is associated with a receptive field on the input image, and can be considered as the feature vector of that field*](https://github.com/fermaat/fermaat.github.io/blob/main/files/images/CRNNs/CRNN2.png?raw=true)
 
 ### RNN Layer
 This is where things get interesting. Each feature vector (from left to right) becomes input to a **Bidirectional RNN**:
@@ -47,7 +47,7 @@ This is where things get interesting. Each feature vector (from left to right) b
 - Helps model **spatial and semantic continuity** in the image
 
 Bidirectionality is crucial here — one direction alone just doesn’t cut it.
-[BILSTM, as pictured on the paper](https://github.com/fermaat/fermaat.github.io/blob/main/files/images/CRNNs/CRNN3.png?raw=true)
+![BILSTM, as pictured on the paper](https://github.com/fermaat/fermaat.github.io/blob/main/files/images/CRNNs/CRNN3.png?raw=true)
 
 ### Transcription Layer (CTC Loss)
 Probably the most elegant piece of the architecture — but also the most mysterious at first — is the **CTC Loss**.
