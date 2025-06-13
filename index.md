@@ -26,6 +26,12 @@ I have led key teams and projects, achieving significant improvements in quality
     * [View on GitHub](https://github.com/fermaat/HomeSync_AI)
 * **LoRA Fine-tuning**: Implementation of LoRA for model fine-tuning.
     * [View on GitHub](https://github.com/fermaat/LoRA-fine-tuning#)
+* **nanoGPT from scratch**: A replication and educational reimplementation of Karpathy's nanoGPT, following the Zero To Hero lecture series.
+    * [View on GitHub](https://github.com/fermaat/nano-gpt-from-scratch)
+* **Deep Learning Foundations Course**: Practical materials from a short course personally designed and developed from scratch and taught at [AFI Escuela de Finanzas](https://www.afiglobaleducation.com) in 2020. It combines theory, practice, and guided solutions for building a deep understanding of deep learning fundamentals.
+    * [View on GitHub](https://github.com/fermaat/afi_deep_learning_intro)
+
+
 
 ---
 ### My Latest Work & Insights
