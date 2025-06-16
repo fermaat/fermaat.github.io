@@ -1,13 +1,15 @@
 ---
 layout: default
 title: "CTC Loss: What Makes It So Elegant (and Tricky!)"
-date: 2025-06-16
+date: 2025-06-11
 ---
-# CTC Loss: What Makes It So Elegant (and Tricky!)
-
 <p align="center">
     <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/CTC/CTC1.png?raw=true" alt="Framewise and CTC networks classifying a speech signal, as pictured in the paper">
 </p>
+
+# CTC Loss: What Makes It So Elegant (and Tricky!)
+
+
 
 In our last post on [**CRNNs**](https://medium.com/@fermaat.vl/crnns-you-dont-always-need-a-transformer-6ffdafb25055), we peeled back the layers of their architecture — but left one powerful trick up the model’s sleeve: Connectionist Temporal Classification (CTC) Loss."
 
