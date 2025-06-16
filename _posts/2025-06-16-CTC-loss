@@ -1,0 +1,98 @@
+# CTC Loss: What Makes It So Elegant (and Tricky!)
+
+<p align="center">
+    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/CTC/CTC1.png?raw=true" alt="Framewise and CTC networks classifying a speech signal, as pictured in the paper">
+</p>
+
+In our last post on [**CRNNs**](https://medium.com/@fermaat.vl/crnns-you-dont-always-need-a-transformer-6ffdafb25055), we peeled back the layers of their architecture — but left one powerful trick up the model’s sleeve: Connectionist Temporal Classification (CTC) Loss."
+
+It’s one of those ideas that seems magical at first — and the more I dig into it, the more I appreciate the elegance behind it. It is not something new, but rather an idea Schmidhuber and others published back in 2006 ([paper link](https://www.cs.toronto.edu/~graves/icml_2006.pdf))
+
+Here are a few takeaways I’ve gathered through hands-on experience and the occasional head-scratching moment. 😊
+
+---
+
+### 🎯 The Beauty of Soft Alignments
+
+One of the best features of CTC is how it **handles alignment** without forcing a rigid frame-by-frame match.
+
+Instead of requiring every output to match every label frame, CTC introduces a **probability distribution over all possible alignments**.
+
+> My favorite part? The special **“blank” label** — a humble yet powerful idea.
+
+For example, if the word is `"hello"`, CTC might model it internally as:
+```bash
+h _ e _ l l _ o
+```
+
+Where `_` represents blanks. This allows the network to handle repeated labels and varying input lengths — essential in speech, handwriting, or scene text.
+
+---
+
+### ⚙️ Efficient by Design (Thanks to Dynamic Programming)
+
+Here’s where things get wild: for a word like `"hello"` (5 characters) over a sequence of 10 timesteps, there are **thousands of possible valid alignments**.
+
+And yet, CTC manages to **compute the total probability across all of them efficiently**, thanks to **dynamic programming**.
+
+> Without this, we’d need to explicitly enumerate every alignment — which would be computationally explosive.
+
+The trick lies in the **forward-backward algorithm**, a clever recurrence relation that avoids brute-force enumeration.
+
+This makes CTC not only powerful but **tractable for real-world use** — even on longer sequences.
+
+<p align="center">
+    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/CTC/CTC2.png?raw=true" alt="Forward-backward algorighm, as pictured in the paper">
+</p>
+
+---
+
+### 🧮 Differentiable and End-to-End
+
+CTC is fully **differentiable**, so it can be dropped right into a standard deep learning pipeline.
+
+For those of us with academic nostalgia: “differentiable” was always one of the most comforting words to hear during a paper reading. 😄
+
+It enables **end-to-end training** without needing explicit alignments at any point — just the final label sequences.
+
+<p align="center">
+    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/CTC/CTC3.png?raw=true" alt="CTC error during training, as pictured in the paper">
+</p>
+
+---
+
+### ⚠️ Initialization Woes: The Blank Label Trap
+
+This one really got me.
+
+In early experiments, I struggled with **blank label probability initialization**. Turns out, getting this wrong can **completely derail training**:
+
+- **Too low**: The model commits too early to alignments and gets stuck in poor local minima.
+- **Too high**: Training becomes sluggish as the model overpredicts blanks and never learns to emit meaningful outputs.
+
+After some painful debugging and reading, I found that initializing the **blank probability to around `0.5–0.7`** often strikes a good balance:
+
+> It gives the model enough flexibility to explore alignments early on, while still encouraging actual predictions.
+
+---
+
+### TL;DR
+
+CTC Loss is one of those underappreciated pieces of the deep learning toolbox. It:
+
+- Models alignment **without supervision**
+- Efficiently handles **a huge number of sequence combinations**
+- Fits **seamlessly into differentiable architectures**
+- Comes with a few sharp edges (like **blank probability**) that are worth watching
+
+---
+
+In a time when Transformers and Attention grab all the headlines, it's nice to revisit building blocks like CTC that quietly power real-world systems — and still teach us new things.
+
+Got questions or war stories of your own with CTC? Drop a comment or connect!
+
+---
+
+### 📚 Reference
+
+- Graves, A., Fernández, S., Gomez, F., & Schmidhuber, J. (2006). [Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with Recurrent Neural Networks](https://www.cs.toronto.edu/~graves/icml_2006.pdf). *Proceedings of the 23rd International Conference on Machine Learning*.
