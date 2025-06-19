@@ -7,7 +7,7 @@ title: Fernando Velasco Lozano | AI Scientist
 <p align="center">
   <a href="https://www.linkedin.com/in/fernandovelascolozano/" target="_blank">LinkedIn</a> • 
   <a href="https://github.com/fermaat" target="_blank">GitHub</a> • 
-  <a href="mailto:fermat.vl@gmail.com">Email</a> •
+  <a href="mailto:fermaat.vl@gmail.com">Email</a> •
   <a href="https://medium.com/@fermaat.vl" target="_blank">Medium</a> •
   <a href="https://fermaat.github.io/files/CV.pdf" target="_blank">CV</a>
 </p>
