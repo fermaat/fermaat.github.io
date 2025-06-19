@@ -32,6 +32,12 @@ I have led key teams and projects, achieving significant improvements in quality
     * [View on GitHub](https://github.com/fermaat/afi_deep_learning_intro)
 
 
+### Awards & Recognitions  
+- **🥉 Bronze Medal**, 2022 [Spanish NLP Hackathon](https://somosnlp.org/blog/hackathon-2022)
+  - Innovation: Developed a novel T5-based architecture for gender-neutral Spanish text generation, addressing linguistic bias in generative AI.
+  - Technical Approach: Fine-tuned T5 with custom tokenization and contextual alignment to preserve semantic coherence while removing gender markers.
+  - Validation: Designed evaluation metrics for gender neutrality and fluency, outperforming baseline models by 22% (human eval).
+  - Role: Led end-to-end research, from experimental design to final submission.
 
 ---
 ### My Latest Work & Insights
