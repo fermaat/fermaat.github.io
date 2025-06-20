@@ -31,8 +31,9 @@ I have led key teams and projects, achieving significant improvements in quality
 * **Deep Learning Foundations Course**: Practical materials from a short course personally designed and developed from scratch and taught at [AFI Escuela de Finanzas](https://www.afiglobaleducation.com) in 2020. It combines theory, practice, and guided solutions for building a deep understanding of deep learning fundamentals.
     * [View on GitHub](https://github.com/fermaat/afi_deep_learning_intro)
 
-* **Translation Agents Lab**: Multi-agent Lab tests for Machine Translation with open-source models => 🚧 Test repo mostly. This is Under Development !
+* **Translation Agents Lab**: Multi-agent Lab tests for Machine Translation with open-source models
     * [View on GitHub](https://github.com/fermaat/translation-agents-lab)
+    * 🚧 Test repo mostly. This is Under Development!
 
 
 ### Awards & Recognitions  
