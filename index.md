@@ -40,6 +40,11 @@ After leading key projects and driving significant improvements in quality and e
     * **Technologies:** Agents, open-source LLM, Translation pipelines, RAG, Evaluation frameworks
     * 🚧 Test repo mostly. This is Under Development!
 
+* **AWS_RAG**: A serverless RAG (Retrieval-Augmented Generation) system built on AWS that automatically processes PDF documents and provides intelligent question-answering capabilities.
+    * [View on GitHub](https://github.com/fermaat/AWS_RAG)
+    * **Technologies:** AWS, PDF, RAG, Lambda, OpenSearch, Bedrock
+
+
 
 ### Awards & Recognitions  
 - **🥉 Bronze Medal**, 2022 [Spanish NLP Hackathon](https://somosnlp.org/blog/hackathon-2022)
