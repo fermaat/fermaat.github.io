@@ -28,6 +28,9 @@ After leading key projects and driving significant improvements in quality and e
 * **LoRA Fine-tuning**: Implementation of LoRA for model fine-tuning.
     * **Technologies:** PyTorch, Transformers, LLM, Fine-Tuning (LoRA, QLoRA), Model Architecture.
     * [View on GitHub](https://github.com/fermaat/LoRA-fine-tuning#)
+* **FashionCLIP**: deep learning pipeline for fine-tuning a CLIP-based vision model on a custom-generated fashion dataset under a custom metric definition
+    * **Technologies:** PyTorch, Multi-modal Transformers, Fine-Tuning, Model Architecture, Triplet Loss
+    * [View on GitHub](https://github.com/fermaat/FashionCLIP#)
 * **nanoGPT from scratch**: A replication and educational reimplementation of Karpathy's nanoGPT, following the Zero To Hero lecture series.
     * **Technologies:** Research, PyTorch, Transformers, Training, Model Architecture, Language Models.
     * [View on GitHub](https://github.com/fermaat/nano-gpt-from-scratch)
