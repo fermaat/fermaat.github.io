@@ -52,6 +52,7 @@ While much of my recent work is proprietary, I am actively exploring and impleme
 * **Neuro-symbolic AI:** Developing hybrid architectures that combine the reasoning and traceability of Symbolic AI (knowledge graphs and rule-based logic) with the perceptual power of Neural Networks (LLMs). This focus aims to solve the "black box" and hallucination problems in enterprise data insights.
 * **LLM-as-Judge & Evaluation Frameworks:** Engineering robust, automated metrics to evaluate model coherence and depth, moving beyond simple benchmarks to ensure high-quality personalization in production. 
 * **Agentic Orchestration:** Designing systems where multiple specialized LLM agents collaborate to solve complex, multi-step tasks, optimizing for both accuracy and computational efficiency.
+
 ---
 
 
