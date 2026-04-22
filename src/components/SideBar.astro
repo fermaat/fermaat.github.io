@@ -1,0 +1,26 @@
+---
+import SideBarFooter from "./SideBarFooter.astro";
+import SideBarMenu from "./SideBarMenu.astro";
+const { sideBarActiveItemID } = Astro.props;
+---
+
+<div class="drawer-side z-40">
+  <label for="my-drawer" class="drawer-overlay"></label>
+  <aside class="px-2 pt-2 h-auto min-h-full w-[19rem] bg-base-200 text-base-content flex flex-col">
+    <div class="w-fit mx-auto mt-5 mb-6">
+      <a href="/" class="block">
+        <div class="avatar transition ease-in-out hover:scale-[102%] block m-auto">
+          <div class="w-[8.5rem] mask mask-circle bg-neutral text-neutral-content flex items-center justify-center">
+            <span class="text-5xl font-bold">FV</span>
+          </div>
+        </div>
+      </a>
+      <div class="text-center mt-3">
+        <div class="font-bold text-lg leading-tight">Fernando Velasco</div>
+        <div class="text-xs opacity-70 mt-1">AI Scientist &amp; Tech Lead</div>
+      </div>
+    </div>
+    <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
+    <SideBarFooter />
+  </aside>
+</div>
