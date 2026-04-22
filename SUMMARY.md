@@ -1,43 +1,88 @@
 # fermaat.github.io — SUMMARY
 
 ## Purpose
-Personal portfolio and technical blog for Fernando Velasco Lozano (Senior Applied Data Scientist & AI Tech Lead). Deployed automatically to GitHub Pages at `https://fermaat.github.io`. Hosts the landing page (EN/ES), featured projects, current research lines, awards, and a Jekyll-powered blog with deep-dive articles on AI/ML topics.
+Personal portfolio and technical blog for Fernando Velasco Lozano (Senior Applied Data Scientist & AI Tech Lead). Deployed to GitHub Pages at `https://fermaat.github.io`. Hosts landing page, featured projects grid, project detail pages, awards, current research lines, and technical deep-dive articles.
+
+## Stack
+- **Framework:** Astro 4
+- **Styling:** TailwindCSS + daisyUI (themes: `lofi` light, `black` dark, toggle with localStorage + prefers-color-scheme)
+- **Typography:** Inter Variable (sans), JetBrains Mono Variable (mono)
+- **Image optimization:** Sharp (Astro `<Image>` component → WebP)
+- **Package manager:** pnpm 10
+- **Deploy:** GitHub Actions → GitHub Pages (`withastro/action@v3`)
 
 ## Architecture
 ```
 .
-├── _config.yml              # Jekyll config — uses cayman theme
-├── index.md                 # Landing page (English, canonical)
-├── index_es.md              # Landing page (Spanish, kept in sync with EN)
-├── _posts/                  # Blog posts (Jekyll convention: YYYY-MM-DD-title.md)
-│   ├── 2025-06-11-lora-vs-full-fine-tuning.md
-│   ├── 2025-06-13-CRNNs: You-dont-always-need-a-transformer.md
-│   ├── 2025-06-16-CTC-loss.md
-│   ├── 2025-06-20-titans.md
-│   ├── 2025-06-23-helmet.md
-│   └── 2025-06-27-AU-Net.md
-├── files/                   # Static assets served under /files/
-│   ├── CV.pdf               # Canonical CV — always overwritten on update
-│   └── images/              # Per-post image folders (AUNet, CRNNs, CTC, HELMET, Lora, Titans)
 ├── .github/workflows/
-│   └── jekyll-gh-pages.yml  # GitHub Actions workflow for GH Pages build & deploy
-├── .gitignore
-├── README.md                # Minimal placeholder
-└── SUMMARY.md               # This file
+│   └── deploy.yml                    # GH Actions: build + deploy on push to main
+├── astro.config.mjs                  # site: https://fermaat.github.io, MDX + sitemap + tailwind
+├── tailwind.config.cjs                # fontFamily overrides + daisyui themes
+├── tsconfig.json
+├── package.json                       # pnpm + onlyBuiltDependencies (sharp, esbuild)
+├── public/                            # Served verbatim at site root
+│   ├── favicon.svg                    # "FV" monogram
+│   ├── og-default.png                 # 1200×630 social preview
+│   ├── robots.txt
+│   ├── files/CV.pdf                   # Canonical CV (stable URL /files/CV.pdf)
+│   └── images/posts/<Post>/*.png      # Post hero + inline images
+├── src/
+│   ├── config.ts                      # SITE_TITLE, SITE_DESCRIPTION, GENERATE_SLUG_FROM_TITLE
+│   ├── styles/global.css              # Font imports + base styling
+│   ├── layouts/
+│   │   ├── BaseLayout.astro           # <html>, theme init, header/sidebar/footer
+│   │   └── PostLayout.astro           # Wraps blog entries with prose styling
+│   ├── components/
+│   │   ├── BaseHead.astro             # <head> meta, og/twitter tags, og-default fallback
+│   │   ├── Header.astro               # Mobile top bar
+│   │   ├── SideBar.astro              # Desktop sidebar: avatar + name + menu + toggle + socials
+│   │   ├── SideBarMenu.astro          # Home / Projects / Writing / CV / Contact
+│   │   ├── SideBarFooter.astro        # GitHub / LinkedIn / Medium / Email / RSS icons
+│   │   ├── ThemeToggle.astro          # Dark/light toggle (daisyui swap)
+│   │   ├── Card.astro                 # Grid card (img optional → fallback gradient+initials)
+│   │   ├── HorizontalCard.astro       # Row card for posts (img optional same way)
+│   │   ├── Footer.astro
+│   │   └── cv/                        # Astrofy CV subcomponents (unused, left for reference)
+│   ├── content/
+│   │   ├── config.ts                  # Zod schemas: blog, projects
+│   │   ├── blog/*.md                  # 6 posts — filename = URL slug
+│   │   └── projects/*.md              # 7 projects — featured flag + order
+│   ├── pages/
+│   │   ├── index.astro                # Home: hero + featured projects + latest posts + research + awards
+│   │   ├── projects.astro             # Full projects grid (sorted by order)
+│   │   ├── projects/[slug].astro      # Project detail (tech, github, demo, content)
+│   │   ├── blog/[slug].astro          # Post detail (delegates to PostLayout)
+│   │   ├── blog/[...page].astro       # Paginated blog index
+│   │   ├── blog/tag/[tag].astro       # Tag filter
+│   │   ├── rss.xml.js                 # RSS feed
+│   │   └── 404.astro
+│   └── lib/createSlug.ts              # Slug helper; toggled by GENERATE_SLUG_FROM_TITLE
+└── SUMMARY.md · README.md · CLAUDE.md
 ```
 
 ## Content conventions
-- **Canonical CV:** `files/CV.pdf` — Fernando overwrites this file on each CV update, so links should always point here.
-- **Landing pages:** `index.md` is the source of truth. `index_es.md` is a translated mirror; keep both in sync when content changes.
-- **Blog posts:** filename format `YYYY-MM-DD-title.md`, front matter with `layout`, `title`, optional `excerpt`. Post images live under `files/images/<PostName>/`.
+
+### Canonical URLs
+- **CV:** `/files/CV.pdf` — stable, always overwritten in-place on updates.
+- **Blog post:** `/blog/<filename-slug>/` (not derived from title; controlled by `GENERATE_SLUG_FROM_TITLE=false` in `src/config.ts`).
+- **Project:** `/projects/<filename-slug>/`.
+
+### Content schemas (`src/content/config.ts`)
+- **`blog`** — `title`, `description`, `pubDate`, `updatedDate?`, `heroImage?`, `badge?`, `tags?[]`.
+- **`projects`** — `title`, `description`, `tech[]`, `featured` (default false), `github?`, `demo?`, `image?`, `order` (default 99), `publishedDate?`.
+
+### Adding content
+- **New post:** create `src/content/blog/<slug>.md` with blog frontmatter. Images go to `public/images/posts/<Folder>/` and are referenced as `/images/posts/<Folder>/<file>`.
+- **New project:** create `src/content/projects/<slug>.md` with projects frontmatter. Set `featured: true` and a low `order` to surface on the home.
 
 ## Deployment
-- GitHub Pages builds on push to `main` via `.github/workflows/jekyll-gh-pages.yml`.
-- Theme: `jekyll-theme-cayman` (set in `_config.yml`).
+- Push to `main` → `.github/workflows/deploy.yml` runs (withastro/action@v3 + actions/deploy-pages@v4).
+- **GitHub Pages source must be set to "GitHub Actions"** in repo Settings → Pages (not branch-based).
+- Build validation: `pnpm build` locally. Lighthouse targets: Performance ≥95, A11y/BP/SEO = 100.
 
 ## Status
-- Active: landing page (EN/ES) and 6 blog posts (June 2025).
-- No `Gemfile` — relies on GH Pages default Jekyll environment.
+- Migrated from Jekyll (cayman theme) to Astro (Astrofy template, heavily customized) on 2026-04-22.
+- ES landing page temporarily removed — re-added later via Astro i18n if needed.
 
 ## Consumers / upstream
 - Standalone. No dependencies on other repos in the personal ecosystem.
