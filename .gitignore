@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Jekyll (legacy — will be removed in Fase 5)
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+Gemfile.lock
+
+# Node / Astro
+node_modules/
+dist/
+.astro/
+.env
+.env.local
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp

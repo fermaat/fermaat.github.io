@@ -1,11 +1,13 @@
 ---
-layout: default
-title: "Neural Long-Term Memory for Enhanced Sequence Modeling"
-date: 2025-06-11
+title: "Titans: Neural Long-Term Memory for Enhanced Sequence Modeling"
+description: "A paper that proposes test-time learnable long-term memory for LLMs, with a 'Surprise' metric that decides what in the context is worth remembering."
+pubDate: "2025-06-20"
+heroImage: "/images/posts/Titans/Titans0.png"
+tags: ["llms", "long-context", "architecture"]
 ---
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/Titans/Titans0.png?raw=true" alt="Awesome T, as pictured in the paper" width="60">
+    <img src="/images/posts/Titans/Titans0.png" alt="Awesome T, as pictured in the paper" width="60">
 </p>
 
 
@@ -29,7 +31,7 @@ Let me repeat that: **at test time!**
 The model dynamically identifies parts of the context and flags them as relevant or not — so it knows what to remember. It does this through a clever metric the authors defined: **“Surprise”** — which basically measures how much a piece of context changes over time. The more it surprises the model, the more attention it gets. 
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/Titans/Titans4.png?raw=true" alt="Surprise! as defined in the paper" width="300">
+    <img src="/images/posts/Titans/Titans4.png" alt="Surprise! as defined in the paper" width="300">
 </p>
 
 
@@ -46,7 +48,7 @@ The authors propose three different approaches for using this memory module:
 I personally liked **MAG** a lot — it gave me LSTM flashbacks in a good way. Instead of the usual gating, they use **sliding window attention** moving through time with memory outputs, which makes it much more adaptive. Feels like a neat evolution of the old tricks.
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/Titans/Titans2.png?raw=true" alt="MAG architecture, as defined in the paper">
+    <img src="/images/posts/Titans/Titans2.png" alt="MAG architecture, as defined in the paper">
 </p>
 
 ---

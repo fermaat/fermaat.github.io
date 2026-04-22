@@ -1,0 +1,65 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const projectEntries = await getCollection("projects");
+  return projectEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"projects">;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const project = entry.data;
+---
+
+<BaseLayout
+  title={project.title}
+  description={project.description}
+  sideBarActiveItemID="projects"
+>
+  <div class="mb-4">
+    <a href="/projects" class="link link-hover opacity-70 text-sm">← Back to projects</a>
+  </div>
+
+  <h1 class="text-4xl font-bold mb-2">{project.title}</h1>
+  {
+    project.featured && (
+      <div class="badge badge-secondary mb-3">FEATURED</div>
+    )
+  }
+  <p class="text-lg opacity-90 mb-6">{project.description}</p>
+
+  <div class="flex flex-wrap gap-2 mb-6">
+    {project.tech.map((t) => <span class="badge badge-outline">{t}</span>)}
+  </div>
+
+  <div class="flex flex-wrap gap-3 mb-8">
+    {
+      project.github && (
+        <a href={project.github} target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+          View on GitHub
+        </a>
+      )
+    }
+    {
+      project.demo && (
+        <a href={project.demo} target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          Live demo
+        </a>
+      )
+    }
+  </div>
+
+  <div class="divider my-4"></div>
+
+  <article class="prose max-w-none">
+    <Content />
+  </article>
+</BaseLayout>

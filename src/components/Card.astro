@@ -1,0 +1,40 @@
+---
+const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
+import { Image } from "astro:assets";
+
+const initials = title
+  .split(/\s+/)
+  .slice(0, 2)
+  .map((w: string) => w[0])
+  .join("")
+  .toUpperCase();
+---
+
+<div class="md:w-1/3 w-full">
+  <a href={url} target={target}>
+    <div class="card bg-base-100 transition ease-in-out hover:shadow-xl mx-6 my-2 hover:scale-[102%] h-full">
+      {
+        img ? (
+          <Image width={750} height={422} format="webp" src={img} alt={title} />
+        ) : (
+          <div
+            class="flex items-center justify-center bg-gradient-to-br from-neutral to-base-300 text-neutral-content"
+            style="aspect-ratio: 750 / 422;"
+          >
+            <span class="text-6xl font-bold opacity-80">{initials}</span>
+          </div>
+        )
+      }
+      <div class="card-body">
+        <h2 class="card-title">
+          {title}
+          {badge && <div class="badge badge-secondary">{badge}</div>}
+        </h2>
+        <p>{desc}</p>
+        <div class="card-actions justify-end">
+          {tags && tags.map((tag: string) => <div class="badge badge-outline">{tag}</div>)}
+        </div>
+      </div>
+    </div>
+  </a>
+</div>

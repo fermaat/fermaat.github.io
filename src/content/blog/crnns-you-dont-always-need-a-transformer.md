@@ -1,10 +1,12 @@
 ---
-layout: default
 title: "CRNNs: You don't always need a Transformer"
-date: 2025-06-12
+description: "Why Convolutional Recurrent Neural Networks still matter for scene text recognition, handwriting transcription, and speech — even in the VLM era."
+pubDate: "2025-06-13"
+heroImage: "/images/posts/CRNNs/CRNN1.png"
+tags: ["computer-vision", "ocr", "deep-learning"]
 ---
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/CRNNs/CRNN1.png?raw=true" alt="Architecture, as proposed in the paper">
+    <img src="/images/posts/CRNNs/CRNN1.png" alt="Architecture, as proposed in the paper">
 </p>
 
 # CRNNs: You don't always need a Transformer
@@ -40,7 +42,7 @@ Once you have the feature maps, the model:
 It’s such a simple idea — yet so effective for turning images into something sequence-friendly.
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/CRNNs/CRNN2.png?raw=true" alt="As the paper says: *Each vector in the extracted feature sequence is associated with a receptive field on the input image, and can be considered as the feature vector of that field*">
+    <img src="/images/posts/CRNNs/CRNN2.png" alt="As the paper says: *Each vector in the extracted feature sequence is associated with a receptive field on the input image, and can be considered as the feature vector of that field*">
 </p>
 
 ### RNN Layer
@@ -53,7 +55,7 @@ This is where things get interesting. Each feature vector (from left to right) b
 Bidirectionality is crucial here — one direction alone just doesn’t cut it.
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/CRNNs/CRNN3.png?raw=true" alt="BILSTM, as pictured on the paper">
+    <img src="/images/posts/CRNNs/CRNN3.png" alt="BILSTM, as pictured on the paper">
 </p>
 
 ### Transcription Layer (CTC Loss)

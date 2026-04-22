@@ -1,0 +1,142 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/Card.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+import createSlug from "../lib/createSlug";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const last_posts = posts.slice(0, 3);
+
+const allProjects = await getCollection("projects");
+const featuredProjects = allProjects
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <!-- Hero -->
+  <div class="pb-10 mt-5">
+    <div class="text-xl py-1 opacity-80">Hi, I'm</div>
+    <div class="text-5xl font-bold">Fernando Velasco Lozano</div>
+    <div class="text-2xl py-3 font-bold opacity-90">
+      Senior Applied Data Scientist &amp; AI Tech Lead
+    </div>
+    <div class="py-2">
+      <p class="text-lg leading-relaxed">
+        I bridge the gap between theoretical mathematics and production-grade AI systems — from
+        <b>neuro-symbolic architectures</b> and <b>LLM orchestration</b> to high-precision
+        <b>ASR</b> and <b>Computer Vision</b> pipelines. This site is my personal AI Lab, where I
+        share deep-dives into model internals and experiment with the tech shaping the future of
+        intelligence.
+      </p>
+    </div>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a class="btn btn-primary" href="/projects">See projects</a>
+      <a class="btn btn-outline" href="/files/CV.pdf" target="_blank" rel="noopener">Download CV</a>
+      <a class="btn btn-ghost" href="mailto:fermaat.vl@gmail.com">Get in touch</a>
+    </div>
+  </div>
+
+  <div class="divider my-2"></div>
+
+  <!-- Featured projects -->
+  <div class="mt-4">
+    <h2 class="text-3xl w-full font-bold mb-4">Featured projects</h2>
+    <div class="flex flex-wrap -mx-6">
+      {
+        featuredProjects.map((project) => (
+          <Card
+            title={project.data.title}
+            desc={project.data.description}
+            url={`/projects/${project.slug}`}
+            target="_self"
+            tags={project.data.tech.slice(0, 3)}
+          />
+        ))
+      }
+    </div>
+    <div class="mt-6">
+      <a href="/projects" class="link link-hover opacity-80">See all projects →</a>
+    </div>
+  </div>
+
+  <div class="divider my-6"></div>
+
+  <!-- Latest writing -->
+  <div>
+    <h2 class="text-3xl w-full font-bold mb-4">Latest writing</h2>
+    {
+      last_posts.map((post) => (
+        <>
+          <HorizontalCard
+            title={post.data.title}
+            img={post.data.heroImage}
+            desc={post.data.description}
+            url={"/blog/" + createSlug(post.data.title, post.slug)}
+            target="_self"
+            badge={post.data.badge}
+          />
+          <div class="divider my-0" />
+        </>
+      ))
+    }
+    <div class="mt-4">
+      <a href="/blog/" class="link link-hover opacity-80">See all posts →</a>
+    </div>
+  </div>
+
+  <div class="divider my-6"></div>
+
+  <!-- Current research -->
+  <div>
+    <h2 class="text-3xl w-full font-bold mb-4">Current research pursuits</h2>
+    <p class="text-base mb-4 opacity-90">
+      Much of my recent work is proprietary, but these are the frontiers I'm actively exploring:
+    </p>
+    <ul class="list-disc pl-6 space-y-3 text-base">
+      <li>
+        <b>Neuro-symbolic AI</b> — hybrid architectures combining the reasoning and traceability
+        of symbolic AI (knowledge graphs, rule-based logic) with the perceptual power of neural
+        networks. Focused on solving the "black box" and hallucination problems in enterprise data
+        insights.
+      </li>
+      <li>
+        <b>LLM-as-Judge &amp; evaluation frameworks</b> — robust, automated metrics for model
+        coherence and depth, moving beyond simple benchmarks to guarantee high-quality
+        personalization in production.
+      </li>
+      <li>
+        <b>Agentic orchestration</b> — designing systems where specialized LLM agents collaborate
+        on complex, multi-step tasks, optimizing for both accuracy and computational efficiency.
+      </li>
+    </ul>
+  </div>
+
+  <div class="divider my-6"></div>
+
+  <!-- Awards -->
+  <div>
+    <h2 class="text-3xl w-full font-bold mb-4">Awards &amp; recognitions</h2>
+    <div class="card bg-base-200">
+      <div class="card-body">
+        <h3 class="card-title text-lg font-semibold">
+          Bronze Medal ·
+          <a
+            href="https://somosnlp.org/blog/hackathon-2022"
+            target="_blank"
+            class="link link-hover"
+          >
+            Spanish NLP Hackathon 2022
+          </a>
+        </h3>
+        <p class="opacity-90">
+          Technical Lead and Lead Researcher. Novel T5-based architecture for gender-neutral
+          Spanish text generation, outperforming baselines by 22% in human evaluation.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

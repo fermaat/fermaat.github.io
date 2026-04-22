@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fermaat.github.io/sitemap-index.xml

@@ -1,10 +1,12 @@
 ---
-layout: default
 title: "CTC Loss: What Makes It So Elegant (and Tricky!)"
-date: 2025-06-11
+description: "A hands-on look at Connectionist Temporal Classification — the soft-alignment loss that powers speech and OCR models, and the humble 'blank' label that makes it work."
+pubDate: "2025-06-16"
+heroImage: "/images/posts/CTC/CTC1.png"
+tags: ["asr", "ocr", "deep-learning"]
 ---
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/CTC/CTC1.png?raw=true" alt="Framewise and CTC networks classifying a speech signal, as pictured in the paper">
+    <img src="/images/posts/CTC/CTC1.png" alt="Framewise and CTC networks classifying a speech signal, as pictured in the paper">
 </p>
 
 # CTC Loss: What Makes It So Elegant (and Tricky!)
@@ -47,7 +49,7 @@ The trick lies in the **forward-backward algorithm**, a clever recurrence relati
 This makes CTC not only powerful but **tractable for real-world use** — even on longer sequences.
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/CTC/CTC2.png?raw=true" alt="Forward-backward algorighm, as pictured in the paper">
+    <img src="/images/posts/CTC/CTC2.png" alt="Forward-backward algorighm, as pictured in the paper">
 </p>
 
 ---
@@ -61,7 +63,7 @@ For those of us with academic nostalgia: “differentiable” was always one of 
 It enables **end-to-end training** without needing explicit alignments at any point — just the final label sequences.
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/CTC/CTC3.png?raw=true" alt="CTC error during training, as pictured in the paper">
+    <img src="/images/posts/CTC/CTC3.png" alt="CTC error during training, as pictured in the paper">
 </p>
 
 ---

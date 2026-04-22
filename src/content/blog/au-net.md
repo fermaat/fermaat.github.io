@@ -1,11 +1,13 @@
 ---
-layout: default
 title: "From Bytes to Ideas: Language Modeling with Autoregressive U-Nets"
-date: 2025-06-23
+description: "A byte-level language modeling proposal where autoregressive U-Nets learn a hierarchical token representation — no tokenizer required."
+pubDate: "2025-06-27"
+heroImage: "/images/posts/AUNet/AUNet0.png"
+tags: ["llms", "architecture", "tokenization"]
 ---
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/AUNet/AUNet0.png?raw=true" alt="AU-Net Architecture, from the paper">
+    <img src="/images/posts/AUNet/AUNet0.png" alt="AU-Net Architecture, from the paper">
 </p>
 
 
@@ -32,7 +34,7 @@ The idea is processing raw bytes and learn the hierarchical token **representati
 - AU then learns representations in a similar way LMs do: by predicting the next information unit. In this case, from the bytes
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/AUNet/AUNet1.png?raw=true" alt="Residual connections, from the paper">
+    <img src="/images/posts/AUNet/AUNet1.png" alt="Residual connections, from the paper">
 </p>
 
 ## Going AU
@@ -49,7 +51,7 @@ AU_Nets showed compelling performance against Byte Pair Encoding (BPE) baselines
 > AU-Net initially underperformed on knowledge-intensive tasks like TQA, this discrepancy tends to vanish with increased model size and training data. On scaling laws, AU-Net (2 and 3 stages) can match the performance of the BPE baseline for tasks like Hellaswag, ARC Easy, and NQ, and the 3-stage model catches up to BPE on TQA at higher compute levels
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/AUNet/AUNet-benchmark-BPE.png?raw=true" alt="General Benchmark on different tasks, coparing against BPE similar architectures, from the paper">
+    <img src="/images/posts/AUNet/AUNet-benchmark-BPE.png" alt="General Benchmark on different tasks, coparing against BPE similar architectures, from the paper">
 </p>
 
 Furthermore, on the FLORES-200 benchmark, AU-Net showed consistent gains in translation tasks into English for regional and low-resource languages, demonstrating its ability to generalize based on subword morphology and shared linguistic roots without requiring these languages in the tokenizer or training corpus. 
@@ -57,7 +59,7 @@ Furthermore, on the FLORES-200 benchmark, AU-Net showed consistent gains in tran
 > However, a limitation observed is its lower Chinese MMLU scores compared to BPE baselines, indicating that its current rule-based splitting function, designed for space-based languages, is not well-suited for non-space-based languages
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/AUNet/AUNet-benchmark-multilingual.png?raw=true" alt="Translation benchmark showing pretty interesting results on low-resource languages">
+    <img src="/images/posts/AUNet/AUNet-benchmark-multilingual.png" alt="Translation benchmark showing pretty interesting results on low-resource languages">
 </p>
 
 ## 🤔 Final thoughts

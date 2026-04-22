@@ -1,10 +1,12 @@
 ---
-layout: default
 title: "LoRA vs Full Fine-Tuning: A Beautiful Illusion of Equivalence"
-date: 2025-06-11
+description: "A critical look at how LoRA fine-tuning actually differs from full fine-tuning — and the 'intruder dimensions' that formalize how LoRA silently forgets part of the pre-training."
+pubDate: "2025-06-11"
+heroImage: "/images/posts/Lora/Lora1.png"
+tags: ["llms", "fine-tuning", "peft"]
 ---
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/Lora/Lora1.png?raw=true" alt="LoRA vs Full Fine-Tuning: Visualizing Intruder Dimensions">
+    <img src="/images/posts/Lora/Lora1.png" alt="LoRA vs Full Fine-Tuning: Visualizing Intruder Dimensions">
 </p>
 
 # LoRA vs Full Fine-Tuning: A Beautiful Illusion of Equivalence?
@@ -26,14 +28,14 @@ Imagine we decompose the model weights using **Singular Value Decomposition (SVD
 This is a compelling lens through which to view forgetting. These "intruding" directions aren’t just slight adjustments to existing knowledge; they represent a **shift** in what the model considers important.
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/Lora/Lora2.png?raw=true" alt="Lora slightly modifies singular vectors, from the paper">
+    <img src="/images/posts/Lora/Lora2.png" alt="Lora slightly modifies singular vectors, from the paper">
 </p>
 
 ## Pseudo Loss and the U-Shape Curve
 Another highlight is the paper’s introduction of **pseudo loss**, which (informally) measures how much of the pre-training knowledge has been lost. I found this particularly elegant. One of the plots shows a curious **U-shape curve** when varying the LoRA rank. It made me wonder: Is there an optimal rank value that balances specialization with memory retention?
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/Lora/Lora3.png?raw=true" alt="U-shape curve on MLI">
+    <img src="/images/posts/Lora/Lora3.png" alt="U-shape curve on MLI">
 </p>
 
 It certainly seems like it.

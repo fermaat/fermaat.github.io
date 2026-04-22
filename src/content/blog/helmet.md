@@ -1,11 +1,13 @@
 ---
-layout: default
 title: "HELMET: A Fresh Look at Context-Length Evaluation in LLMs"
-date: 2025-06-23
+description: "A benchmark system for evaluating LLMs across long contexts — summarization, long-doc QA, RAG, re-ranking, and generation with citations — beyond synthetic needle-in-a-haystack tests."
+pubDate: "2025-06-23"
+heroImage: "/images/posts/HELMET/HELMET-logo.png"
+tags: ["llms", "long-context", "evaluation"]
 ---
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/HELMET/HELMET-logo.png?raw=true" alt="Helmet logo, from their github" width="60">
+    <img src="/images/posts/HELMET/HELMET-logo.png" alt="Helmet logo, from their github" width="60">
 </p>
 
 # HELMET: A Fresh Look at Context-Length Evaluation in LLMs
@@ -27,7 +29,7 @@ HELMET sets up a benchmark that includes both classic and newer tasks. Think:
 - Generation with citations (this one's getting more attention lately)
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/HELMET/HELMET_features.png?raw=true" alt="HELMET feature summary, from the paper">
+    <img src="/images/posts/HELMET/HELMET_features.png" alt="HELMET feature summary, from the paper">
 </p>
 
 But what really caught my eye is their the smart way on which they use models-as-a-judge in the loop.
@@ -43,7 +45,7 @@ This brings evaluations closer to how humans would reason. ROUGE might tell you 
 Of course, there’s a tradeoff. Having a model act as judge introduces **non-determinism** — so by definition, this isn’t a pure metric anymore. That’s a flaw. But if the judge is a powerful model (e.g. GPT-4o) and the tasks aren’t too ambiguous, that non-determinism can be reduced. Still worth keeping in mind.
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/HELMET/HELMET-correlation.png?raw=true" alt="Spearman rank correlation between categories at L=128K. from the paper" width="300">
+    <img src="/images/posts/HELMET/HELMET-correlation.png" alt="Spearman rank correlation between categories at L=128K. from the paper" width="300">
 </p>
 
 ---
@@ -53,7 +55,7 @@ Of course, there’s a tradeoff. Having a model act as judge introduces **non-de
 One fun example: **Claude 3.5 Sonnet**. It tends to include too much helpful preamble or explanation along with its answers. While that’s nice from a user experience perspective, it gets **penalized in ROUGE-based evaluations** like NarrativeQA F1. But! When evaluated using a model-as-a-judge, its performance looks much better.
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/HELMET/HELMET-fig6.png?raw=true" alt="Figure 6 from the paper, take a deep look about evaluation and performance degradation">
+    <img src="/images/posts/HELMET/HELMET-fig6.png" alt="Figure 6 from the paper, take a deep look about evaluation and performance degradation">
 </p>
 
 So, **context matters — but so does how you evaluate it**.
@@ -66,7 +68,7 @@ That said, there *is* a visible difference between open-source and closed-source
 - **Open-source models** start degrading around **8k–16k**.
 
 <p align="center">
-    <img src="https://github.com/fermaat/fermaat.github.io/blob/main/files/images/HELMET/HELMET-fig7.png?raw=true" alt="Figure 7 from the paper">
+    <img src="/images/posts/HELMET/HELMET-fig7.png" alt="Figure 7 from the paper">
 </p>
 
 (Just a note — the paper was published back in **October**, so the included models were from before that.)
