@@ -1,3 +1,15 @@
-.time-line-container>div:last-child .education__time>.education__line {
+@import '@fontsource-variable/inter/index.css';
+@import '@fontsource-variable/jetbrains-mono/index.css';
+
+html {
+    font-family: 'Inter Variable', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+code, pre, kbd, samp {
+    font-family: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.time-line-container > div:last-child .education__time > .education__line {
     display: none;
 }

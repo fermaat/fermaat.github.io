@@ -2,6 +2,13 @@
 const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
 import { Image } from "astro:assets";
 const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
+
+const initials = title
+  .split(/\s+/)
+  .slice(0, 2)
+  .map((w: string) => w[0])
+  .join("")
+  .toUpperCase();
 ---
 
 <div
@@ -10,7 +17,7 @@ const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
   <a href={url} target={target}>
     <div class="hero-content flex-col md:flex-row">
       {
-        img && (
+        img ? (
           <Image
             src={img}
             width={750}
@@ -19,6 +26,13 @@ const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
             alt={title}
             class="max-w-full md:max-w-[13rem] rounded-lg"
           />
+        ) : (
+          <div
+            class="flex items-center justify-center bg-gradient-to-br from-neutral to-base-300 text-neutral-content rounded-lg max-w-full md:max-w-[13rem] w-full md:w-[13rem]"
+            style="aspect-ratio: 750 / 422;"
+          >
+            <span class="text-4xl font-bold opacity-80">{initials}</span>
+          </div>
         )
       }
       <div class="grow w-full">
@@ -30,7 +44,7 @@ const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
         <div class="card-actions justify-end">
           {
             tags &&
-              tags.map((tag) => (
+              tags.map((tag: string) => (
                 <a href={`${tag_url}/${tag}`} class="badge badge-outline">
                   {tag}
                 </a>
