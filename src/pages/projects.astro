@@ -22,6 +22,7 @@ const allProjects = (await getCollection("projects")).sort(
       allProjects.map((project) => (
         <Card
           title={project.data.title}
+          img={project.data.image}
           desc={project.data.description}
           url={`/projects/${project.slug}`}
           target="_self"

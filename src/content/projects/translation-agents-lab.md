@@ -4,6 +4,7 @@ description: "Experimental multi-agent framework for Machine Translation using o
 tech: ["AI Agents", "Open-source LLMs", "RAG", "Evaluation Frameworks"]
 featured: true
 github: "https://github.com/fermaat/translation-agents-lab"
+image: "/images/projects/translation-agents-lab.png"
 order: 1
 ---
 
