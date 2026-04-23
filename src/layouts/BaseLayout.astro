@@ -7,6 +7,7 @@ import { ViewTransitions } from "astro:transitions";
 
 import "../styles/global.css";
 import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API } from "../config";
+import { getLocale } from "../i18n/utils";
 
 const {
   image,
@@ -16,10 +17,12 @@ const {
   sideBarActiveItemID,
   ogType,
 } = Astro.props;
+
+const locale = getLocale(Astro.url);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <BaseHead title={title} description={description} image={image} , ogType={ogType} />
     <script is:inline>
@@ -39,15 +42,15 @@ const {
     <div class="bg-base-100 drawer lg:drawer-open">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" aria-label="Sidebar navigation" />
       <div class="drawer-content bg-base-100">
-        <Header title={SITE_TITLE} />
+        <Header title={SITE_TITLE} locale={locale} />
         <div class="md:flex md:justify-center">
           <main class="p-6 pt-10 lg:max-w-[900px] max-w-[100vw]">
             <slot />
           </main>
         </div>
-        <Footer />
+        <Footer locale={locale} />
       </div>
-      {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} />}
+      {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} locale={locale} />}
     </div>
   </body>
 </html>

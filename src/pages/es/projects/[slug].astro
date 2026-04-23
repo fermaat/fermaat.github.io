@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import ProjectDetailPage from "../../components/ProjectDetailPage.astro";
+import ProjectDetailPage from "../../../components/ProjectDetailPage.astro";
 
 export async function getStaticPaths() {
   const projectEntries = await getCollection("projects");
@@ -14,4 +14,4 @@ interface Props { entry: CollectionEntry<"projects"> }
 const { entry } = Astro.props;
 ---
 
-<ProjectDetailPage entry={entry} locale="en" />
+<ProjectDetailPage entry={entry} locale="es" />

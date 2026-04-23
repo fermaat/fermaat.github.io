@@ -1,0 +1,65 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { t, type Locale } from "../i18n/strings";
+import { localizePath } from "../i18n/utils";
+
+interface Props {
+  entry: CollectionEntry<"projects">;
+  locale?: Locale;
+}
+
+const { entry, locale = "en" } = Astro.props as Props;
+const s = t(locale);
+const { Content } = await entry.render();
+const project = entry.data;
+
+const displayTitle = locale === "es" ? (project.title_es ?? project.title) : project.title;
+const displayDesc = locale === "es" ? (project.description_es ?? project.description) : project.description;
+const backHref = localizePath("/projects", locale);
+---
+
+<BaseLayout
+  title={displayTitle}
+  description={displayDesc}
+  sideBarActiveItemID="projects"
+>
+  <div class="mb-4">
+    <a href={backHref} class="link link-hover opacity-70 text-sm">{s.project_detail.back}</a>
+  </div>
+
+  <h1 class="text-4xl font-bold mb-2">{displayTitle}</h1>
+  {
+    project.featured && (
+      <div class="badge badge-secondary mb-3">{s.project_detail.featured_badge}</div>
+    )
+  }
+  <p class="text-lg opacity-90 mb-6">{displayDesc}</p>
+
+  <div class="flex flex-wrap gap-2 mb-6">
+    {project.tech.map((t) => <span class="badge badge-outline">{t}</span>)}
+  </div>
+
+  <div class="flex flex-wrap gap-3 mb-8">
+    {
+      project.github && (
+        <a href={project.github} target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+          {s.project_detail.view_github}
+        </a>
+      )
+    }
+    {
+      project.demo && (
+        <a href={project.demo} target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+          {s.project_detail.live_demo}
+        </a>
+      )
+    }
+  </div>
+
+  <div class="divider my-4"></div>
+
+  <article class="prose max-w-none">
+    <Content />
+  </article>
+</BaseLayout>

@@ -1,6 +1,8 @@
 ---
 title: "Copper — AI-maintained knowledge bases"
+title_es: "Copper — bases de conocimiento mantenidas por IA"
 description: "An LLM Archivist reads raw sources — notes, PDFs, Obsidian vaults — and compiles a structured markdown wiki. No embeddings, no RAG; just folders, text, and LLM workflows (store / tap / polish)."
+description_es: "Un Archivero-LLM lee fuentes sin procesar — notas, PDFs, bóvedas de Obsidian — y compila una wiki estructurada en Markdown. Sin embeddings ni RAG; solo carpetas, texto y workflows de LLM (store / tap / polish)."
 tech: ["Python 3.12+", "FastAPI", "LLM workflows", "pdfplumber", "Typer"]
 featured: true
 github: "https://github.com/fermaat/copper"

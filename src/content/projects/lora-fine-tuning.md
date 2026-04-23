@@ -1,6 +1,8 @@
 ---
 title: "LoRA Fine-tuning"
+title_es: "LoRA Fine-tuning"
 description: "Hands-on implementation and analysis of Low-Rank Adaptation for efficient LLM steering."
+description_es: "Implementación práctica y análisis de Low-Rank Adaptation para el ajuste eficiente de LLMs."
 tech: ["PyTorch", "Transformers", "PEFT", "LoRA", "QLoRA"]
 featured: false
 github: "https://github.com/fermaat/LoRA-fine-tuning"

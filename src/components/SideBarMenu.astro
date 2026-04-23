@@ -1,17 +1,31 @@
 ---
-const { sideBarActiveItemID } = Astro.props;
+import { t, type Locale } from "../i18n/strings";
+import { localizePath } from "../i18n/utils";
+
+interface Props {
+  sideBarActiveItemID?: string;
+  locale?: Locale;
+}
+
+const { sideBarActiveItemID, locale = "en" } = Astro.props as Props;
+const s = t(locale);
 const activeClass = "bg-base-300";
+
+// Blog stays English-only; in ES the "Writing" link still goes to /blog/.
+const homeHref = localizePath("/", locale);
+const projectsHref = localizePath("/projects", locale);
+const blogHref = "/blog/";
 ---
 
 <ul class="menu grow shrink menu-md overflow-y-auto">
-    <li><a class="py-3 text-base" id="home" href="/">Home</a></li>
-    <li><a class="py-3 text-base" id="projects" href="/projects">Projects</a></li>
-    <li><a class="py-3 text-base" id="blog" href="/blog/">Writing</a></li>
+    <li><a class="py-3 text-base" id="home" href={homeHref}>{s.nav.home}</a></li>
+    <li><a class="py-3 text-base" id="projects" href={projectsHref}>{s.nav.projects}</a></li>
+    <li><a class="py-3 text-base" id="blog" href={blogHref}>{s.nav.blog}</a></li>
     <li>
-        <a class="py-3 text-base" href="/files/CV.pdf" target="_blank" rel="noopener">CV</a>
+        <a class="py-3 text-base" href="/files/CV.pdf" target="_blank" rel="noopener">{s.nav.cv}</a>
     </li>
     <li>
-        <a class="py-3 text-base" href="mailto:fermaat.vl@gmail.com">Contact</a>
+        <a class="py-3 text-base" href="mailto:fermaat.vl@gmail.com">{s.nav.contact}</a>
     </li>
 </ul>
 

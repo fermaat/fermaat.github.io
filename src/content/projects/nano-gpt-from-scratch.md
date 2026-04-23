@@ -1,6 +1,8 @@
 ---
 title: "nanoGPT from scratch"
+title_es: "nanoGPT desde cero"
 description: "Educational reimplementation of autoregressive language models to master the fundamentals of modern Transformer architectures."
+description_es: "Reimplementación didáctica de modelos de lenguaje autorregresivos para dominar los fundamentos de las arquitecturas Transformer modernas."
 tech: ["PyTorch", "Transformer Training", "Language Modeling"]
 featured: false
 github: "https://github.com/fermaat/nano-gpt-from-scratch"

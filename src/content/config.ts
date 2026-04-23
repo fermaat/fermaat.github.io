@@ -14,7 +14,9 @@ const blogSchema = z.object({
 
 const projectsSchema = z.object({
     title: z.string(),
+    title_es: z.string().optional(),
     description: z.string(),
+    description_es: z.string().optional(),
     tech: z.array(z.string()),
     featured: z.boolean().default(false),
     github: z.string().url().optional(),

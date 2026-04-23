@@ -1,6 +1,8 @@
 ---
 title: "HomeSync AI"
+title_es: "HomeSync AI"
 description: "AI-powered household management application leveraging multi-modal LLMs for document digitization and smart analytics."
+description_es: "App de gestión del hogar con IA que aprovecha LLMs multi-modales para la digitalización de documentos y analítica inteligente."
 tech: ["Gemini Pro Vision", "OCR", "Streamlit", "Python"]
 featured: false
 github: "https://github.com/fermaat/HomeSync_AI"

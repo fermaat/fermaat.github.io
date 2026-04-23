@@ -1,0 +1,47 @@
+---
+import { t, type Locale } from "../i18n/strings";
+
+interface Props { locale?: Locale }
+const { locale = "en" } = Astro.props as Props;
+const s = t(locale);
+---
+
+<button
+  class="btn btn-ghost btn-sm font-mono text-xs locale-toggle"
+  aria-label={s.toggle.locale_aria}
+  title={s.toggle.locale_aria}
+  data-current={locale}
+>
+  {s.toggle.locale_label}
+</button>
+
+<script is:inline>
+  (function () {
+    function targetPath(pathname, current) {
+      if (current === "es") {
+        const stripped = pathname.replace(/^\/es(\/|$)/, "/");
+        return stripped === "" ? "/" : stripped;
+      }
+      if (pathname.startsWith("/blog")) return "/es/";
+      if (pathname === "/") return "/es/";
+      return "/es" + pathname;
+    }
+    function init() {
+      document.querySelectorAll(".locale-toggle").forEach((btn) => {
+        if (btn.dataset.wired === "1") return;
+        btn.dataset.wired = "1";
+        btn.addEventListener("click", () => {
+          const current = btn.dataset.current || "en";
+          const next = targetPath(location.pathname, current);
+          location.href = next;
+        });
+      });
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+    document.addEventListener("astro:after-swap", init);
+  })();
+</script>

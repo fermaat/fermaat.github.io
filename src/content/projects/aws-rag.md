@@ -1,6 +1,8 @@
 ---
 title: "AWS_RAG"
+title_es: "AWS_RAG"
 description: "Serverless RAG system built for intelligent document processing and question-answering at scale."
+description_es: "Sistema RAG serverless para procesamiento inteligente de documentos y Q&A a escala."
 tech: ["AWS Lambda", "OpenSearch", "Bedrock", "Vector Databases", "RAG"]
 featured: false
 github: "https://github.com/fermaat/AWS_RAG"

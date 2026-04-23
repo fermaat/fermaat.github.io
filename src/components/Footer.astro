@@ -1,4 +1,9 @@
 ---
+import { t, type Locale } from "../i18n/strings";
+
+interface Props { locale?: Locale }
+const { locale = "en" } = Astro.props as Props;
+const s = t(locale);
 const today = new Date();
 ---
 
@@ -7,9 +12,9 @@ const today = new Date();
     &copy; {today.getFullYear()} Fernando Velasco Lozano
   </div>
   <div class="inline opacity-75 text-sm">
-    Built with <a href="https://astro.build" target="_blank" class="font-bold">Astro</a> ·
-    <a href="https://astrofy-template.netlify.app/" target="_blank" class="font-bold">Astrofy</a> template ·
-    <a href="https://github.com/fermaat/fermaat.github.io" target="_blank" class="font-bold">source</a>
+    {s.footer.built_with} <a href="https://astro.build" target="_blank" class="font-bold">Astro</a> ·
+    <a href="https://astrofy-template.netlify.app/" target="_blank" class="font-bold">Astrofy</a> {s.footer.template} ·
+    <a href="https://github.com/fermaat/fermaat.github.io" target="_blank" class="font-bold">{s.footer.source}</a>
   </div>
 </footer>
 <style></style>
