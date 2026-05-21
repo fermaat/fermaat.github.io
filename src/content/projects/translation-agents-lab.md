@@ -4,10 +4,10 @@ title_es: "Translation Agents Lab"
 description: "Experimental multi-agent framework for Machine Translation using open-source LLMs. Explores collaborative decision-making between models to surpass traditional translation benchmarks."
 description_es: "Framework multi-agente experimental para traducción automática con LLMs open-source. Explora la toma de decisiones colaborativa entre modelos para superar los benchmarks tradicionales de traducción."
 tech: ["AI Agents", "Open-source LLMs", "RAG", "Evaluation Frameworks"]
-featured: true
+featured: false
 github: "https://github.com/fermaat/translation-agents-lab"
 image: "/images/projects/translation-agents-lab.png"
-order: 1
+order: 11
 ---
 
 Experimental framework where multiple specialized LLM agents collaborate on translation tasks — reviewer, translator, domain expert — iterating until a consensus that beats single-model baselines. Includes a custom evaluation harness to measure coherence, faithfulness, and fluency.
