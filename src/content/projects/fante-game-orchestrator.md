@@ -5,6 +5,8 @@ description: "Game-loop orchestrator for a voice-and-text RPG built for a 2-year
 description_es: "Orquestador de bucle de juego para un RPG de voz y texto construido para un niño de 2 años. Coordina narración LLM, reglas de juego (vía MCP) e input del jugador mediante una arquitectura de puertos y adaptadores diseñada para crecer con el jugador."
 tech: ["Python 3.12+", "MCP", "core-llm-bridge", "Pydantic v2", "Ports & Adapters"]
 featured: true
+github: "https://github.com/fermaat/fante-game-orchestrator"
+image: "/images/projects/fante-game-orchestrator.png"
 order: 1
 ---
 

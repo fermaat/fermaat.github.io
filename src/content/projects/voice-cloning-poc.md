@@ -5,6 +5,7 @@ description: "2-day research spike comparing voice-cloning routes — Azure Pers
 description_es: "Spike de investigación comparando rutas de voice cloning — Azure Personal Voice, XTTS-v2, F5-TTS y Qwen3-TTS — sobre una rejilla de evaluación fija. Hallazgo clave: fidelidad al hablante y naturalidad en la lengua objetivo son objetivos en tensión estructural; las métricas automáticas (WER/UTMOS) son ciegas a la transferencia de acento L1."
 tech: ["Python", "XTTS-v2", "F5-TTS", "Qwen3-TTS", "Whisper", "SpeechBrain", "Azure"]
 featured: false
+image: "/images/projects/voice-cloning-poc.png"
 order: 10
 ---
 
